@@ -349,43 +349,36 @@ export default function Home() {
         }}>
           <h2 style={{ marginBottom: '15px' }}>정산 결과</h2>
           <div>
-            {results.map((result, index) => (
-              <div key={`result-${index}`} style={{ 
-                padding: '15px',
-                marginBottom: '10px',
-                border: '1px solid #e0e0e0',
-                borderRadius: '5px',
-                backgroundColor: 'white'
-              }}>
-                <p style={{ margin: '0 0 8px 0', fontWeight: 'bold', fontSize: '16px' }}>
-                  {result.name}
-                </p>
-                <div style={{ marginLeft: '15px' }}>
-                  <p style={{ margin: '5px 0' }}>
-                    <strong>총:</strong> {Math.abs(result.amount).toFixed(0)}원 
-                    <span style={{ color: result.amount > 0 ? '#c62828' : '#2e7d32' }}>
-                      {result.amount > 0 ? ' (내야 함)' : ' (받아야 함)'}
-                    </span>
-                  </p>
-                  {result.drinkingAmount !== 0 && (
-                    <p style={{ margin: '5px 0' }}>
-                      <strong>술값:</strong> {Math.abs(result.drinkingAmount).toFixed(0)}원
-                      <span style={{ color: result.drinkingAmount > 0 ? '#c62828' : '#2e7d32' }}>
-                        {result.drinkingAmount > 0 ? ' (내야 함)' : ' (받아야 함)'}
-                      </span>
-                    </p>
-                  )}
-                  {result.foodAmount !== 0 && (
-                    <p style={{ margin: '5px 0' }}>
-                      <strong>식사:</strong> {Math.abs(result.foodAmount).toFixed(0)}원
-                      <span style={{ color: result.foodAmount > 0 ? '#c62828' : '#2e7d32' }}>
-                        {result.foodAmount > 0 ? ' (내야 함)' : ' (받아야 함)'}
-                      </span>
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
+          {results.map((result, index) => (
+  <div key={`result-${index}`} style={{ 
+    padding: '15px',
+    marginBottom: '10px',
+    border: '1px solid #e0e0e0',
+    borderRadius: '5px',
+    backgroundColor: 'white'
+  }}>
+    <p style={{ margin: '0 0 8px 0', fontWeight: 'bold', fontSize: '16px' }}>
+      {result.name}
+    </p>
+    <div style={{ marginLeft: '15px' }}>
+      <p style={{ margin: '5px 0' }}>
+        <strong>총:</strong> {result.amount > 0 
+          ? `${Math.abs(result.amount).toFixed(0)}원 (정산금)` 
+          : `${Math.abs(result.amount).toFixed(0)}원`}
+      </p>
+      {result.drinkingAmount !== 0 && (
+        <p style={{ margin: '5px 0' }}>
+          <strong>술값:</strong> {Math.abs(result.drinkingAmount).toFixed(0)}원
+        </p>
+      )}
+      {result.foodAmount !== 0 && (
+        <p style={{ margin: '5px 0' }}>
+          <strong>식사:</strong> {Math.abs(result.foodAmount).toFixed(0)}원
+        </p>
+      )}
+    </div>
+  </div>
+))}
           </div>
         </div>
       )}
